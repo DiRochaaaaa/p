@@ -49,7 +49,19 @@ function PriceCard({
   };
   
   const pricePerPulseira = Math.floor(price / quantity);
-  const installment = (price / 12).toFixed(2);
+  
+  const getInstallmentValue = () => {
+    switch(quantity) {
+      case 1:
+        return '10,83';
+      case 3:
+        return '19,35';
+      case 5:
+        return '27,31';
+      default:
+        return (price / 12).toFixed(2);
+    }
+  };
   
   return (
     <div className="relative">
@@ -84,7 +96,7 @@ function PriceCard({
               <span className="text-lg mr-1">R$</span> {formatPrice(price)}
             </div>
             <div className="flex items-center justify-center gap-2 mt-1">
-              <p className="text-sm text-gray-500">12x de R$ {installment}</p>
+              <p className="text-sm text-gray-500">12x de R$ {getInstallmentValue()}</p>
               {quantity > 1 && (
                 <>
                   <span className="text-gray-400">|</span>
