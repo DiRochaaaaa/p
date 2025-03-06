@@ -1,0 +1,159 @@
+/* Fonte personalizada para títulos */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .font-display {
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-purple-600;
+  }
+  
+  .text-gradient-dark {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-purple-400;
+  }
+  
+  /* Animações */
+  .fade-in {
+    @apply opacity-0 animate-[fadeIn_1s_ease-in-out_forwards];
+  }
+  
+  .slide-up {
+    @apply opacity-0 translate-y-10 animate-[slideUp_0.8s_ease-out_forwards];
+  }
+  
+  .slide-in-right {
+    @apply opacity-0 translate-x-10 animate-[slideInRight_0.8s_ease-out_forwards];
+  }
+  
+  .slide-in-left {
+    @apply opacity-0 -translate-x-10 animate-[slideInLeft_0.8s_ease-out_forwards];
+  }
+  
+  .scale-in {
+    @apply opacity-0 scale-95 animate-[scaleIn_0.8s_ease-out_forwards];
+  }
+  
+  .pulse-slow {
+    @apply animate-[pulse_3s_infinite];
+  }
+  
+  /* Padrão de dots */
+  .bg-dots-pattern {
+    background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
+  }
+  
+  /* Padrão de dots alternativo */
+  .bg-dots-pattern-2 {
+    background-image: radial-gradient(circle, currentColor 1.5px, transparent 1.5px);
+    background-size: 25px 25px;
+  }
+  
+  /* Padrão de grid */
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+  
+  /* Efeitos Glassmorphism */
+  .shadow-glass {
+    @apply shadow-lg;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  
+  /* Sombra com glow */
+  .shadow-glow-red {
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
+  }
+  
+  /* Animações de blob */
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+  
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+  
+  /* Escala sutil para hover */
+  .hover\:scale-102:hover {
+    transform: scale(1.02);
+  }
+}
+
+/* Keyframes para animações */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  0% { opacity: 0; transform: translateX(40px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInLeft {
+  0% { opacity: 0; transform: translateX(-40px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  0% { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+/* Animação de revelação ao scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
