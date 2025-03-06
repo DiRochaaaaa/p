@@ -37,12 +37,6 @@ function PriceCard({
             className="w-32 drop-shadow-xl hover:scale-110 transition-transform duration-300"
             loading="lazy"
           />
-          
-          {quantity > 1 && (
-            <div className="absolute -top-2 -right-2 bg-purple-600 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center shadow-md">
-              {quantity}
-            </div>
-          )}
         </div>
       </div>
     );
@@ -54,6 +48,7 @@ function PriceCard({
     return Math.floor(value);
   };
   
+  const pricePerPulseira = Math.floor(price / quantity);
   const installment = (price / 12).toFixed(2);
   
   return (
@@ -69,12 +64,18 @@ function PriceCard({
           -{discountPercentage}%
         </div>
         
+        <div className={`absolute ${recommended ? 'top-12' : 'top-4'} left-4 bg-purple-600 text-white text-sm font-bold px-3 py-1 rounded-full z-10`}>
+          {quantity} {quantity === 1 ? 'pulseira' : 'pulseiras'}
+        </div>
+        
         <div className="absolute -z-10 top-0 left-0 w-full h-full bg-gradient-to-br from-transparent via-red-50 to-purple-50 opacity-30 rounded-xl" />
         
         <div className={`p-6 ${recommended ? 'pt-10' : ''}`}>
           {renderPulseiras()}
           
-          <h3 className={`text-xl font-display font-bold ${recommended ? 'text-purple-700' : 'text-red-700'} mb-3 text-center`}>{title}</h3>
+          <h3 className={`text-xl font-display font-bold ${recommended ? 'text-purple-700' : 'text-red-700'} mb-3 text-center`}>
+            {title}
+          </h3>
           <p className="text-gray-600 mb-4 text-center">{description}</p>
           
           <div className="mb-6 text-center">
@@ -82,10 +83,29 @@ function PriceCard({
             <div className={`text-3xl font-bold ${recommended ? 'text-purple-700' : 'text-red-700'} flex items-center justify-center`}>
               <span className="text-lg mr-1">R$</span> {formatPrice(price)}
             </div>
-            <p className="text-sm text-gray-500 mt-1">ou 12x de R$ {installment}</p>
+            <div className="flex items-center justify-center gap-2 mt-1">
+              <p className="text-sm text-gray-500">12x de R$ {installment}</p>
+              {quantity > 1 && (
+                <>
+                  <span className="text-gray-400">|</span>
+                  <p className="text-sm font-medium text-green-600">Apenas R$ {pricePerPulseira} cada</p>
+                </>
+              )}
+            </div>
           </div>
           
           <div className="space-y-3 mb-6">
+            <div className="bg-purple-50 rounded-lg p-3 mb-4">
+              <p className="text-sm font-medium text-purple-600 flex items-center justify-center gap-2">
+                <Package className="h-5 w-5" />
+                {quantity === 1 ? 'Kit Individual' : `Kit com ${quantity} Pulseiras`}
+              </p>
+              {quantity > 1 && (
+                <p className="text-xs text-center text-purple-500 mt-1">
+                  Economia de R$ {formatPrice(originalPrice - price)} no kit completo
+                </p>
+              )}
+            </div>
             <p className="text-sm text-gray-600 flex items-center">
               <Check className="inline-block mr-2 h-4 w-4 text-green-600" />
               Envio imediato

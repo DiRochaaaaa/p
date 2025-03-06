@@ -52,7 +52,7 @@ function App() {
       </div>
       
       {/* Hero Section - Mais chamativa */}
-      <div className="relative overflow-hidden py-20">
+      <div className="relative overflow-hidden py-8 min-h-screen flex items-center">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-red-100 via-purple-50 to-transparent opacity-40" />
         
         {/* Elementos decorativos animados */}
@@ -61,20 +61,34 @@ function App() {
         <div className="absolute top-1/2 left-1/2 w-40 h-40 bg-pink-200 rounded-full blur-3xl animate-pulse opacity-30" />
         
         <div className="container mx-auto px-4 max-w-6xl relative">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            <div className="lg:w-1/2">
-              <div className="inline-flex items-center bg-white/30 backdrop-blur-md text-red-800 px-4 py-2 rounded-full mb-6 animate-pulse shadow-glass">
+          <div className="flex flex-col lg:flex-row items-center gap-8">
+            <div className="lg:w-1/2 flex flex-col">
+              <div className="inline-flex items-center bg-white/30 backdrop-blur-md text-red-800 px-4 py-2 rounded-full mb-4 animate-pulse shadow-glass self-start">
                 <Star className="h-4 w-4 mr-2" /> Proteção Garantida
               </div>
-              <h1 className="font-display text-4xl lg:text-6xl font-bold mb-6 leading-tight gradient-text slide-in-left">
+              <h1 className="font-display text-3xl sm:text-4xl lg:text-6xl font-bold mb-4 leading-tight gradient-text slide-in-left">
                 Descubra o Poder dos 7 Nós: Sua Proteção Diária
               </h1>
-              <p className="text-xl text-gray-700 mb-8 slide-in-left" style={{ animationDelay: '0.2s' }}>
+              <p className="text-lg sm:text-xl text-gray-700 mb-6 slide-in-left" style={{ animationDelay: '0.2s' }}>
                 Há séculos, a Pulseira dos 7 Nós tem sido um símbolo de proteção e equilíbrio. 
                 Cada nó é amarrado com uma intenção específica, criando um poderoso escudo energético 
                 que acompanha você em todos os momentos.
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 slide-in-left" style={{ animationDelay: '0.4s' }}>
+
+              {/* Imagem para Mobile */}
+              <div className="lg:hidden w-full mb-6 slide-in-right">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-red-500 to-purple-500 rounded-full blur-3xl opacity-20 animate-pulse" />
+                  <img 
+                    src="https://leitura.tarodosanjos.online/wp-content/uploads/2025/03/7e78949d-01f0-4e74-b1d3-c7e24e37562c.png"
+                    alt="Pulseira 7 Nós"
+                    className="w-full max-w-xs mx-auto relative drop-shadow-2xl hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3 mb-6 slide-in-left" style={{ animationDelay: '0.4s' }}>
                 <Feature icon={ShieldCheck} text="Proteção contra energias negativas" />
                 <Feature icon={Star} text="Escudo contra inveja" />
                 <Feature icon={Star} text="Equilíbrio energético" />
@@ -83,14 +97,16 @@ function App() {
               
               <a 
                 href="#pricing" 
-                className="bg-gradient-to-r from-red-600 to-purple-600 text-white py-4 px-8 rounded-lg font-bold text-lg hover:from-red-700 hover:to-purple-700 transition-colors slide-in-left flex items-center justify-center md:justify-start shadow-glow-red" 
+                className="bg-gradient-to-r from-red-600 to-purple-600 text-white py-4 px-8 rounded-lg font-bold text-lg hover:from-red-700 hover:to-purple-700 transition-colors slide-in-left flex items-center justify-center shadow-glow-red" 
                 style={{ animationDelay: '0.6s' }}
               >
                 Quero Minha Proteção Agora
                 <ArrowRight className="ml-2 h-5 w-5" />
               </a>
             </div>
-            <div className="lg:w-1/2 slide-in-right">
+
+            {/* Imagem para Desktop */}
+            <div className="hidden lg:block lg:w-1/2 slide-in-right">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-red-500 to-purple-500 rounded-full blur-3xl opacity-20 animate-pulse" />
                 <img 
@@ -332,7 +348,7 @@ function App() {
           </div>
           <div className="flex items-center space-x-2 bg-white/40 backdrop-blur-md p-3 rounded-lg shadow-glass">
             <Clock className="h-5 w-5 text-green-600" />
-            <span className="text-gray-700">Entrega em até 7 dias</span>
+            <span className="text-gray-700">Entrega Ultra Rápida</span>
           </div>
           <div className="flex items-center space-x-2 bg-white/40 backdrop-blur-md p-3 rounded-lg shadow-glass">
             <Check className="h-5 w-5 text-green-600" />
@@ -407,7 +423,7 @@ function App() {
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-6 md:mb-0">
-              <h3 className="font-display text-2xl font-bold mb-2">Pulseira 7 Nós</h3>
+              <h3 className="font-display text-2xl font-bold mb-2">Converse com Jesus®</h3>
               <p className="text-white/80">Sua proteção energética diária</p>
             </div>
             <div className="flex space-x-6">
@@ -416,8 +432,14 @@ function App() {
               <a href="#" className="text-white/80 hover:text-white transition-colors">Contato</a>
             </div>
           </div>
-          <div className="border-t border-white/20 mt-8 pt-8 text-center text-white/70">
-            <p>&copy; {new Date().getFullYear()} Pulseira 7 Nós. Todos os direitos reservados.</p>
+          <div className="border-t border-white/20 mt-8 pt-8 text-center">
+            <div className="grid gap-2">
+              <p className="text-white/70">&copy; {new Date().getFullYear()} Converse com Jesus®. Todos os direitos reservados.</p>
+              <p className="text-white/70">CNPJ: 49.365.551/0001-48</p>
+              <p className="text-white/70">Artemi LTDA</p>
+              <p className="text-white/70">Avenida Industrial 1120 A, Distrito Industrial</p>
+              <p className="text-white/70">Governador Valadares - MG, CEP: 35040-610</p>
+            </div>
           </div>
         </div>
       </footer>
